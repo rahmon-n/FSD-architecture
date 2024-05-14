@@ -1,3 +1,3 @@
-import {HomeAsync} from "pages/Home/HomeAsync";
+import { HomeAsync } from 'pages/Home/HomeAsync';
 
-export {HomeAsync as Home};
+export { HomeAsync as Home };
