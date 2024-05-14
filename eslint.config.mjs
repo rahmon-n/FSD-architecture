@@ -4,12 +4,19 @@ import tseslint from 'typescript-eslint';
 import pluginReactConfig from 'eslint-plugin-react/configs/recommended.js';
 import hooksPlugin from 'eslint-plugin-react-hooks';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import i18next from 'eslint-plugin-i18next'
 
 export default [
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReactConfig,
+  {
+    plugins: {
+      'i18next': i18next,
+    },
+    rules: i18next.configs.recommended.rules
+  },
   {
     plugins: {
       'react-hooks': hooksPlugin,
