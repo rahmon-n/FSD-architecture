@@ -1,15 +1,25 @@
 import { classNames } from './classNames';
 
-describe('classNames', () => {
-  test('should return the same className', () => {
-    expect(classNames('foo')).toBe('foo');
+describe('classNames function', () => {
+  it('should concatenate classes correctly', () => {
+    expect(classNames('base')).toBe('base');
+    expect(classNames('base', { 'is-active': true })).toBe('base is-active');
+    expect(classNames('base', { 'is-active': true, 'is-hidden': false })).toBe(
+      'base is-active'
+    );
+    expect(classNames('base', { 'is-active': true }, ['extra-class'])).toBe(
+      'base extra-class is-active'
+    );
   });
 
-  test('should return true mod', () => {
-    expect(classNames('', { red: true, hovered: false })).toBe(' red');
+  it('should ignore falsy values', () => {
+    expect(classNames('base', { 'is-active': false })).toBe('base');
+    expect(classNames('base', { 'is-active': false }, ['extra-class'])).toBe(
+      'base extra-class'
+    );
   });
 
-  test('should return className and additional className', () => {
-    expect(classNames('ali', { red: false }, ['blue'])).toBe('ali blue');
+  it('should handle empty arguments', () => {
+    expect(classNames('base', {}, [])).toBe('base');
   });
 });
