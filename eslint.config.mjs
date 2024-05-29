@@ -29,5 +29,13 @@ export default [
       'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
     },
+    overrides: [
+      {
+        files: ['**/src/**/*.test.{ts,tsx}'],
+        rules: {
+          'i18next/no-literal-string': 'off'
+        }
+      },
+    ]
   },
 ];
