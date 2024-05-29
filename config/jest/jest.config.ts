@@ -19,11 +19,15 @@ const config: Config = {
     'json',
     'node',
   ],
-  moduleDirectories: ['node_modules'],
+  moduleDirectories: ['node_modules', 'src'],
+  modulePaths: ['<rootDir>src'],
   rootDir: '../../',
   testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
-  // All imported modules in your tests should be mocked automatically
-  // automock: false,
+  setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
+  moduleNameMapper: {
+    '\\.(scss|css|sass)$': 'identity-obj-proxy',
+    '.svg': '<rootDir>/config/jest/jestEmptyComponent.tsx',
+  },
 
   // Stop running tests after `n` failures
   // bail: 0,
